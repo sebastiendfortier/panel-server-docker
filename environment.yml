@@ -15,10 +15,11 @@ dependencies:
   - param
   - plotly
   - pydeck
-  - python=3.9
   - pyvista
   - scikit-learn
   - scipy
   - seaborn
   - xarray
   - xgboost
+  - panel=0.13.1
+
