@@ -31,5 +31,5 @@ RUN apt-get update && \
     apt-get autoremove && \
     apt-get clean
 
-CMD /opt/conda/bin/activate env && /opt/conda/envs/env/bin/panel serve --allow-websocket-origin='*' /data/*.ipynb
+CMD /opt/conda/bin/activate env && /opt/conda/envs/env/bin/panel serve --unused-session-lifetime 60000 --allow-websocket-origin='*' /data/*.ipynb
 

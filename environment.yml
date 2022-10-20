@@ -22,4 +22,5 @@ dependencies:
   - xarray
   - xgboost
   - panel=0.13.1
-
+  - vega_datasets
+  - folium
