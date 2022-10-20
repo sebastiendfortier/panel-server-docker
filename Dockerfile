@@ -34,5 +34,6 @@ RUN apt-get update && \
     apt-get autoremove && \
     apt-get clean
 
-CMD PATH=$PATH:/root/.conda/envs/env/bin /root/.conda/envs/env/bin/panel serve /data/*.ipynb
+#CMD tail -F /dev/null
+CMD /opt/conda/bin/activate env && /opt/conda/envs/env/bin/panel serve /data/*.ipynb
 
