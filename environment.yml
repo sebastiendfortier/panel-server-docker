@@ -4,21 +4,21 @@ channels:
   - nodefaults
 dependencies:
   - altair
-  - numba
-  - pandas
-  - notebook
-  - hvplot
-  - numpy
-  - param
   - bokeh
-  - pyvista
-  - scipy
-  - xarray
   - datashader
-  - scikit-learn
-  - xgboost
+  - hvplot
+  - notebook
+  - numba
+  - numpy
+  - pandas
+  - panel
+  - param
   - plotly
   - pydeck
+  - python=3.9
+  - pyvista
+  - scikit-learn
+  - scipy
   - seaborn
-  - pip
-
+  - xarray
+  - xgboost
