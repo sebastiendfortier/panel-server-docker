@@ -1,0 +1,12 @@
+
+version: "3"
+
+services:
+  panel-server:
+    container_name: panel-server
+    build: .
+    ports: 
+      - "5006:5006"
+    volumes:
+      - C:\Users\slyfox\panel_python3.10_mambaforge:/data
+#    network_mode: host
