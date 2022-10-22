@@ -1,1 +1,2 @@
 panel-0.14.1rc1.tar.gz filter=lfs diff=lfs merge=lfs -text
+panel.tar.gz filter=lfs diff=lfs merge=lfs -text

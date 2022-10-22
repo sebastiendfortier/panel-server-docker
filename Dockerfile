@@ -9,31 +9,40 @@ EXPOSE 5006
 
 SHELL ["/bin/bash", "-c"]
 
-RUN mamba install -y -n base -c conda-forge conda-lock && \
-    mamba env create -n env -f /environment.yml
-
+RUN mamba install -y -n base -c conda-forge conda-lock conda-pack && \
+    mamba env create -n env -f /environment.yml && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends curl sudo libgl1-mesa-glx && \
+    mkdir /node && \
+    cd node && \
+    curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - && \
+    apt-get install -y nodejs
  
-#COPY panel-0.14.1rc1.tar.gz /
+COPY panel.tar.gz /
+COPY requirements.txt /
 
-#RUN apt-get update && \
-#    apt-get install -y --no-install-recommends \
-#    sudo \
-#    curl
+RUN mkdir /panel && \
+    tar zxf /panel.tar.gz -C /panel && \
+    source /opt/conda/bin/activate env && \
+    python -m pip install --upgrade pip && \
+    python -m pip install /panel/panel/. && \
+    python -m pip install -r /requirements.txt && \
+    conda deactivate && \
+    conda-pack -n env
+    
+     
+FROM ubuntu:20.04
 
-#RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
-#    apt-get install -y nodejs
+COPY --from=conda env.tar.gz /env.tar.gz
 
-#RUN tar zxf panel-0.14.1rc1.tar.gz
+SHELL ["/bin/bash", "-c"]
 
-#RUN /opt/conda/bin/activate env 
-
-#RUN cd /panel-0.14.1rc1 && python -m pip install .
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends libgl1-mesa-glx && \
-    apt-get autoremove && \
-    apt-get clean
-
+RUN mkdir /env && \
+    tar zxf env.tar.gz -C /env && \
+    rm -rf env.tar.gz && \
+    source /env/bin/activate && \
+    conda-unpack 
+    
 #CMD tail -F /dev/null
-CMD /opt/conda/bin/activate env && /opt/conda/envs/env/bin/panel serve /data/*.ipynb
+CMD source /env/bin/activate && panel serve /data/*.ipynb
 

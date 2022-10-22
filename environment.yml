@@ -3,22 +3,27 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - altair
-  - bokeh
-  - datashader
-  - hvplot
-  - notebook
-  - numba
-  - numpy
-  - pandas
-  - panel
-  - param
-  - plotly
-  - pydeck
-  - python=3.9
-  - pyvista
-  - scikit-learn
-  - scipy
-  - seaborn
-  - xarray
-  - xgboost
+#  - altair
+#  - bokeh
+#  - datashader
+#  - hvplot
+#  - notebook
+#  - numba
+#  - numpy
+#  - pandas
+#  - param
+#  - plotly
+#  - pydeck
+#  - python=3.9
+#  - pyvista
+#  - scikit-learn
+#  - scipy
+#  - seaborn
+#  - xarray
+#  - xgboost
+#  - folium
+#  - vega_datasets
+   - python=3.9
+   - pynio
+   - nodejs=18
+   - libtiledb-sql
