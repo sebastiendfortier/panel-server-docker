@@ -43,6 +43,5 @@ RUN mkdir /env && \
     source /env/bin/activate && \
     conda-unpack 
     
-#CMD tail -F /dev/null
-CMD source /env/bin/activate && panel serve /data/*.ipynb
+CMD source /env/bin/activate && panel serve --unused-session-lifetime 60000 --allow-websocket-origin='*' /data/*.ipynb
 
